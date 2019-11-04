@@ -36,7 +36,7 @@
 	
 	<!-- 引用dubbo服务 -->
 	<dubbo:application name="pekka-manager-web"/>
-	<dubbo:registry protocol="zookeeper" address="192.168.25.128:2181"/>	
+	<dubbo:registry protocol="zookeeper" address="192.168.25.128:2181" file = "managerweb.properties"/>	
 	<dubbo:reference interface="com.pekka.service.ItemService" id="itemService" />	
 	<dubbo:reference interface="com.pekka.service.ItemCatService" id="itemCatService" />
 	<dubbo:reference interface="com.pekka.content.service.ContentCategoryService" id="contentCategoryService" />	
