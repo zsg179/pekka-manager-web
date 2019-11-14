@@ -1,5 +1,9 @@
 package com.pekka.controller;
 
+import java.util.Arrays;
+import java.util.List;
+
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -31,6 +35,25 @@ public class ItemController {
 	@ResponseBody
 	public EasyUIDataGridResult getItemList(Integer page, Integer rows) {
 		return itemService.getItemList(page, rows);
+	}
+
+	@RequestMapping(value = "/manager/item/getItemByItemInfo", method = RequestMethod.POST)
+	@ResponseBody
+	public EasyUIDataGridResult getItemByItemInfo(String itemInfo) {
+		EasyUIDataGridResult result = new EasyUIDataGridResult();
+		if (StringUtils.isNumeric(itemInfo)) {
+			// 全数字，就认为收到的是商品id
+			long itemId = Long.parseLong(itemInfo);
+			TbItem tbItem = itemService.getItemById(itemId);
+			List<TbItem> list = Arrays.asList(tbItem);
+			result.setRows(list);
+			result.setTotal(1);
+			return result;
+		} else {
+			// 不全是数字，认为收到的是商品标题
+			result = itemService.getItemByTitle(itemInfo);
+			return result;
+		}
 	}
 
 	/**

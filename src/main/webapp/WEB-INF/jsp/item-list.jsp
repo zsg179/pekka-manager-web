@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <table class="easyui-datagrid" id="itemList" title="商品列表" 
-       data-options="singleSelect:false,collapsible:true,pagination:true,url:'/item/list',method:'get',pageSize:30,toolbar:toolbar">
+       data-options="singleSelect:false,collapsible:true,remoteSort:false,pagination:true,url:'/item/list',method:'get',pageSize:30,toolbar:toolbar">
     <thead>
         <tr>
         	<th data-options="field:'ck',checkbox:true"></th>
@@ -8,18 +8,26 @@
             <th data-options="field:'title',width:200">商品标题</th>
             <th data-options="field:'cid',width:100">叶子类目</th>
             <th data-options="field:'sellPoint',width:100">卖点</th>
-            <th data-options="field:'price',width:70,align:'right',formatter:TAOTAO.formatPrice">价格</th>
-            <th data-options="field:'num',width:70,align:'right'">库存数量</th>
+            <th data-options="field:'price',width:70,align:'right',formatter:TAOTAO.formatPrice,sortable:true">价格</th>
+            <th data-options="field:'num',width:70,align:'right',sortable:true">库存数量</th>
             <th data-options="field:'barcode',width:100">条形码</th>
             <th data-options="field:'status',width:60,align:'center',formatter:TAOTAO.formatItemStatus">状态</th>
             <th data-options="field:'adId',width:60,align:'center',formatter:TAOTAO.formatADStatus">广告分类</th>
-            <th data-options="field:'created',width:130,align:'center',formatter:TAOTAO.formatDateTime">创建日期</th>
-            <th data-options="field:'updated',width:130,align:'center',formatter:TAOTAO.formatDateTime">更新日期</th>
+            <th data-options="field:'created',width:130,align:'center',formatter:TAOTAO.formatDateTime,sortable:true">创建日期</th>
+            <th data-options="field:'updated',width:130,align:'center',formatter:TAOTAO.formatDateTime,sortable:true">更新日期</th>
         </tr>
     </thead>
 </table>
 <div id="itemEditWindow" class="easyui-window" title="编辑商品" data-options="modal:true,closed:true,iconCls:'icon-save',href:'/rest/page/item-edit'" style="width:80%;height:80%;padding:10px;">
 </div>
+
+
+<script type="text/javascript"> 
+function qq(value,name){ 
+alert(value+":"+name) 
+} ;
+
+</script> 
 <script>
 
     function getSelectionsIds(){
@@ -69,7 +77,7 @@
         			});
         			
         			//加载商品规格
-        			$.getJSON('/rest/item/param/item/query/'+data.id,function(_data){
+        			/* $.getJSON('/rest/item/param/item/query/'+data.id,function(_data){
         				if(_data && _data.status == 200 && _data.data && _data.data.paramData){
         					$("#itemeEditForm .params").show();
         					$("#itemeEditForm [name=itemParams]").val(_data.data.paramData);
@@ -94,7 +102,7 @@
         					 html+= "</ul>";
         					 $("#itemeEditForm .params td").eq(1).html(html);
         				}
-        			});
+        			}); */
         			
         			TAOTAO.init({
         				"pics" : data.image,
@@ -172,5 +180,20 @@
         	    }
         	});
         }
+    },{
+    	 text:'<input type="text" id="itemInfo" placeholder="商品标题/ID"/>',
+    	 
+    },{
+    	text:'查询',
+    	iconCls:'icon-search',
+    	handler:function(){
+    		var itemInfo = $("#itemInfo").val();
+    		$.post("/manager/item/getItemByItemInfo",{'itemInfo':itemInfo},function(data){
+    			if(data.rows==0){
+    				alert("没有找到该商品！请确认商品标题/ID");
+    			}
+    			$("#itemList").datagrid("loadData",data);//加载本地数据，旧的行将被移除。
+    		});
+    	}
     }];
 </script>

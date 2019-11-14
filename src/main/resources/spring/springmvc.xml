@@ -43,5 +43,6 @@
 	<dubbo:reference interface="com.pekka.content.service.ContentService" id="contentService" />
 	<dubbo:reference interface="com.pekka.service.ItemADService" id="itemADService" />	
 	<dubbo:reference interface="com.pekka.search.service.SearchItemService" id="searchItemService" />	
+	<dubbo:reference interface="com.pekka.service.UserManagerService" id="userManagerService" />	
 		
 </beans>

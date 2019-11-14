@@ -54,6 +54,12 @@
 	         		<li data-options="attributes:{'url':'import-index'}">导入索引库</li>
 	         	</ul>
          	</li>
+         	<li>
+         		<span>用户管理</span>
+         		<ul>
+	         		<li data-options="attributes:{'url':'user-list'}">用户信息</li>
+	         	</ul>
+         	</li>
          </ul>
     </div>
     <div data-options="region:'center',title:''">
