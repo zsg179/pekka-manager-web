@@ -48,10 +48,16 @@
 	         		<li data-options="attributes:{'url':'content'}">内容管理</li>
 	         	</ul>
          	</li>
-         	<li>
+         	<!-- <li>
          		<span>索引库管理</span>
          		<ul>
 	         		<li data-options="attributes:{'url':'import-index'}">导入索引库</li>
+	         	</ul>
+         	</li> -->
+         	<li>
+         		<span>订单管理</span>
+         		<ul>
+	         		<li data-options="attributes:{'url':'order-list'}">订单详情</li>
 	         	</ul>
          	</li>
          	<li>

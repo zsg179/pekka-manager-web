@@ -22,6 +22,7 @@
 	<!-- 指定/WEB-INF/js/ 和 /WEB-INF/css/下的所有静态资源包括子目录下的静态资源都不被拦截-->
 	<mvc:resources location="/WEB-INF/js/" mapping="/js/**"/>
 	<mvc:resources location="/WEB-INF/css/" mapping="/css/**"/>
+	<mvc:resources location="/WEB-INF/images/" mapping="/images/**"/>
 	
 	<!-- 多媒体解析器 -->
 	<!-- 定义文件上传解析器 -->
@@ -44,5 +45,6 @@
 	<dubbo:reference interface="com.pekka.service.ItemADService" id="itemADService" />	
 	<dubbo:reference interface="com.pekka.search.service.SearchItemService" id="searchItemService" />	
 	<dubbo:reference interface="com.pekka.service.UserManagerService" id="userManagerService" />	
+	<dubbo:reference interface="com.pekka.service.OrderManagerService" id="orderManagerService" />	
 		
 </beans>

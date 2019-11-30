@@ -31,8 +31,9 @@ var TT = TAOTAO = {
 	},
 	// 格式化时间
 	formatDateTime : function(val,row){
+		if(val == null || val == '') return '';
 		var now = new Date(val);
-    	return now.format("yyyy-MM-dd hh:mm:ss");
+		return now.format("yyyy-MM-dd hh:mm:ss");
 	},
 	// 格式化连接
 	formatUrl : function(val,row){
@@ -44,6 +45,69 @@ var TT = TAOTAO = {
 	// 格式化价格
 	formatPrice : function(val,row){
 		return (val/100).toFixed(2);
+	},
+	//格式化订单操作
+	formatOperation:function(val,row){
+		return "<a style='text-decoration:none;' href='javascript:void(0)' Onclick=TAOTAO.handleDeliverGoods("+row.orderId+")>发货</a>"
+		+"&nbsp;&nbsp;&nbsp;"+"<a style='text-decoration:none;' href='javascript:void(0)' Onclick=TAOTAO.handleCheck("+row.orderId+")>查看详情</a>";
+	},
+	//订单操作返回处理
+	handleDeliverGoods:function(orderId){
+		//$.messager.confirm("确认", "确认发货吗？",function(r){
+			//if(r){
+				$.ajax({
+					url:"/order/deliverGoods",
+					type:"post",
+					dataType:"json",
+					data:{orderId:orderId},
+					success:function(data){
+						$.messager.alert("提示", data.msg);
+						$("#orderList").datagrid("reload");//加载本地数据，旧的行将被移除。
+					}
+				})
+			//}
+		//})
+	},
+	//订单商品详情查看
+	handleCheck:function(orderId){
+		$.ajax({
+			url:"/order/orderItemInfo",
+			type:"post",
+			dataType:"json",
+			data:{orderId:orderId},
+			success:function(data){
+				if(data.status == 200){
+					TT.createWindow({
+						url:"order-itemInfo",
+						title:"订单商品详情"
+					})
+				}else{
+					$.messager.alert("提示", "查询错误！");
+				}
+			}
+		})
+	},
+	//格式化支付类型
+	formatPaymentTpye:function(val,row){
+		if(val == 1){
+			return '在线支付';
+		}else if(val == 2){
+			return '货到付款';
+		}
+	},
+	//格式化订单状态
+	formatOrderStatus:function(val,row){
+		if(val == 1){
+			return '未付款';
+		}else if(val == 2){
+			return '已付款';
+		}else if(val == 4){
+			return '已发货';
+		}else if(val == 5){
+			return '交易成功';
+		}else if(val == 6){
+			return '交易关闭';
+		}
 	},
 	// 格式化商品的状态
 	formatItemStatus : function formatStatus(val,row){
@@ -186,8 +250,8 @@ var TT = TAOTAO = {
      */
     createWindow : function(params){
     	$("<div>").css({padding:"5px"}).window({
-    		width : params.width?params.width:"80%",
-    		height : params.height?params.height:"80%",
+    		width : params.width?params.width:"50%",
+    		height : params.height?params.height:"70%",
     		modal:true,
     		title : params.title?params.title:" ",
     		href : params.url,
@@ -204,6 +268,7 @@ var TT = TAOTAO = {
     
     closeCurrentWindow : function(){
     	$(".panel-tool-close").click();
+    	
     },
     
     changeItemParam : function(node,formId){
