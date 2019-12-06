@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 
 <form id="itemADAddForm" class="itemForm" method="post">
-	<input type="hidden" name="adId" value="${param.adId }"/>
+	<input type="hidden" name="categoryName" value="${param.categoryName }"/>
 	<table cellpadding="5" style="margin-left: 30px" id="itemParamAddTable" class="itemParam">
 	
 		<tr>
@@ -26,8 +26,10 @@ function submitForm(){
 	$.post("/item/ad/save",$("#itemADAddForm").serialize(), function(data){
 		if(data.status == 200){
 			$.messager.alert('提示','新增商品广告成功!');
-			$("#itemADList${param.adId }").datagrid("reload");
+			$("#itemADList${param.categoryName }").datagrid("reload");
 			TT.closeCurrentWindow();
+		}else{
+			$.messager.alert('提示',data.msg);
 		}
 	});
 }

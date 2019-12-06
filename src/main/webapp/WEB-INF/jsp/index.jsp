@@ -28,15 +28,15 @@
 	         		<li>
 	         			<span>商品分类管理</span>
 	         			<ul>
-	         				<li data-options="attributes:{'url':'item-adcategory-list?adId=0'}">当季热卖</li>
-	         				<li data-options="attributes:{'url':'item-adcategory-list?adId=1'}">益智玩具</li>
-	         				<li data-options="attributes:{'url':'item-adcategory-list?adId=2'}">遥控电动</li>
-	         				<li data-options="attributes:{'url':'item-adcategory-list?adId=3'}">积木拼插</li>
-	         				<li data-options="attributes:{'url':'item-adcategory-list?adId=4'}">动漫模型</li>
-	         				<li data-options="attributes:{'url':'item-adcategory-list?adId=5'}">健身玩具</li>
-	         				<li data-options="attributes:{'url':'item-adcategory-list?adId=6'}">毛绒玩具</li>
-	         				<li data-options="attributes:{'url':'item-adcategory-list?adId=7'}">创意DIY</li>
-	         				<li data-options="attributes:{'url':'item-adcategory-list?adId=8'}">乐器</li>
+	         				<li data-options="attributes:{'url':'item-adcategory-list?categoryName=0'}">当季热卖</li>
+	         				<li data-options="attributes:{'url':'item-adcategory-list?categoryName=1'}">益智玩具</li>
+	         				<li data-options="attributes:{'url':'item-adcategory-list?categoryName=2'}">遥控电动</li>
+	         				<li data-options="attributes:{'url':'item-adcategory-list?categoryName=3'}">积木拼插</li>
+	         				<li data-options="attributes:{'url':'item-adcategory-list?categoryName=4'}">动漫模型</li>
+	         				<li data-options="attributes:{'url':'item-adcategory-list?categoryName=5'}">健身玩具</li>
+	         				<li data-options="attributes:{'url':'item-adcategory-list?categoryName=6'}">毛绒玩具</li>
+	         				<li data-options="attributes:{'url':'item-adcategory-list?categoryName=7'}">创意DIY</li>
+	         				<li data-options="attributes:{'url':'item-adcategory-list?categoryName=8'}">乐器</li>
 	         			</ul>
 	         		</li>
 	         	</ul>

@@ -17,22 +17,116 @@ public class ItemADController {
 
 	@RequestMapping(value = "/item/ad/list", method = RequestMethod.GET)
 	@ResponseBody
-	public EasyUIDataGridResult getItemADList(Long adId) {
-		EasyUIDataGridResult result = itemADService.getItemADList(adId);
+	public EasyUIDataGridResult getItemADList(Long categoryName) {
+		String cName = "";
+		EasyUIDataGridResult result = new EasyUIDataGridResult();
+		switch (categoryName.intValue()) {
+		case 0:
+			result = itemADService.getItemADHotList();
+			return result;
+		case 1:
+			cName = "益智玩具";
+			break;
+		case 2:
+			cName = "遥控电动";
+			break;
+		case 3:
+			cName = "积木拼插";
+			break;
+		case 4:
+			cName = "动漫模型";
+			break;
+		case 5:
+			cName = "健身玩具";
+			break;
+		case 6:
+			cName = "毛绒玩具";
+			break;
+		case 7:
+			cName = "创意DIY";
+			break;
+		case 8:
+			cName = "乐器";
+			break;
+		}
+		result = itemADService.getItemADList(cName);
 		return result;
 	}
 
 	@RequestMapping("/item/ad/save")
 	@ResponseBody
-	public PekkaResult itemADSave(Long id, Long adId) {
-		PekkaResult result = itemADService.add(id, adId);
+	public PekkaResult itemADSave(Long id, Long categoryName) {
+		String cName = "";
+		PekkaResult result = new PekkaResult();
+
+		switch (categoryName.intValue()) {
+		case 0:
+			cName = "当季热卖";
+			break;
+		case 1:
+			cName = "益智玩具";
+			break;
+		case 2:
+			cName = "遥控电动";
+			break;
+		case 3:
+			cName = "积木拼插";
+			break;
+		case 4:
+			cName = "动漫模型";
+			break;
+		case 5:
+			cName = "健身玩具";
+			break;
+		case 6:
+			cName = "毛绒玩具";
+			break;
+		case 7:
+			cName = "创意DIY";
+			break;
+		case 8:
+			cName = "乐器";
+			break;
+		}
+		result = itemADService.add(id, cName);
 		return result;
 	}
 
 	@RequestMapping("/item/ad/delete")
 	@ResponseBody
-	public PekkaResult itemADDelete(Long[] ids) {
-		PekkaResult result = itemADService.delete(ids);
+	public PekkaResult itemADDelete(Long[] ids, Long categoryName) {
+		String cName = "";
+		PekkaResult result = new PekkaResult();
+		switch (categoryName.intValue()) {
+		case 0:
+			cName = "当季热卖";
+			break;
+		case 1:
+			cName = "益智玩具";
+			break;
+		case 2:
+			cName = "遥控电动";
+			break;
+		case 3:
+			cName = "积木拼插";
+			break;
+		case 4:
+			cName = "动漫模型";
+			break;
+		case 5:
+			cName = "健身玩具";
+			break;
+		case 6:
+			cName = "毛绒玩具";
+			break;
+		case 7:
+			cName = "创意DIY";
+			break;
+		case 8:
+			cName = "乐器";
+			break;
+		}
+		result = itemADService.delete(ids, cName);
 		return result;
 	}
 }
