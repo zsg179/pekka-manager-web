@@ -119,31 +119,22 @@ var TT = TAOTAO = {
         	return '未知';
         }
     },
-    // 格式化商品的状态
+    // 格式化商品是否为广告
     formatADStatus : function formatStatus(val,row){
     	if (val == 0){
-    		return '当季热卖';
-    	} else if(val == 1){
-    		return '益智玩具';
-    	} else if(val == 2){
-    		return '遥控电动';
-    	} else if(val == 3){
-    		return '积木拼插';
-    	} else if(val == 4){
-    		return '动漫模型';
-    	} else if(val == 5){
-    		return '健身玩具';
-    	} else if(val == 6){
-    		return '毛绒玩具';
-    	} else if(val == 7){
-    		return '创意DIY';
-    	} else if(val == 8){
-    		return '乐器';
-    	} else {
-    		return '非广告';
+    		return '否';
+    	}else {
+    		return '是';
     	}
     },
-    
+    // 格式化商品是否为热门
+    formatHOTStatus : function formatStatus(val,row){
+    	if (val == 0){
+    		return '否';
+    	}else {
+    		return '是';
+    	}
+    },    
     init : function(data){
     	// 初始化图片上传组件
     	this.initPicUpload(data);
