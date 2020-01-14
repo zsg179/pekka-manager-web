@@ -21,4 +21,14 @@ public class PageController {
 		return page;
 	}
 
+	@RequestMapping("/page/login")
+	public String login() {
+		return "login-manager";
+	}
+
+	@RequestMapping("/manager/register")
+	public String register() {
+		return "register-manager";
+	}
+
 }

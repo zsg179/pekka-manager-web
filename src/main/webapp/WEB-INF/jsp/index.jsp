@@ -66,12 +66,18 @@
 	         		<li data-options="attributes:{'url':'user-list'}">用户信息</li>
 	         	</ul>
          	</li>
+         	<li>
+         		<span>管理员</span>
+         		<ul>
+	         		<li data-options="attributes:{'url':'managerinfo'}">管理员信息</li>
+	         		<li data-options="attributes:{'url':'updatepwd'}">修改登陆密码</li>
+	         	</ul>
+         	</li>
          </ul>
     </div>
     <div data-options="region:'center',title:''">
     	<div id="tabs" class="easyui-tabs">
-		    <div title="首页" style="padding:20px;">
-		        	
+		    <div title="首页" style="padding:20px;"></div>
 		    </div>
 		</div>
     </div>
