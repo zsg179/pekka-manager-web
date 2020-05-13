@@ -24,10 +24,10 @@
 							maxFractionDigits="2" minFractionDigits="2"
 							value="${orderItem.price / 100 }" /></strong>
 					<!--增加预售金额显示 end-->
-					<span class="ml20"> x${orderItem.num} </span> <span
-						class="ml20 p-inventory" skuId="11555193">有货</span>
+					<span class="ml20"> x${orderItem.num} </span> <!-- <span
+						class="ml20 p-inventory" skuId="11555193">有货</span> -->
 				</div>
-				<i class="p-icon p-icon-w"></i><span class="ftx-04">7天无理由退货</span>
+				<!-- <i class="p-icon p-icon-w"></i><span class="ftx-04">7天无理由退货</span> -->
 			</div>
 			<div class="clr"></div>
 		</div>

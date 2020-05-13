@@ -53,8 +53,8 @@ var TT = TAOTAO = {
 	},
 	//订单操作返回处理
 	handleDeliverGoods:function(orderId){
-		//$.messager.confirm("确认", "确认发货吗？",function(r){
-			//if(r){
+		$.messager.confirm("确认", "确认发货吗？",function(r){
+			if(r){
 				$.ajax({
 					url:"/order/deliverGoods",
 					type:"post",
@@ -65,8 +65,8 @@ var TT = TAOTAO = {
 						$("#orderList").datagrid("reload");//加载本地数据，旧的行将被移除。
 					}
 				})
-			//}
-		//})
+			}
+		})
 	},
 	//订单商品详情查看
 	handleCheck:function(orderId){
